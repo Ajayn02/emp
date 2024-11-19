@@ -1,0 +1,52 @@
+<div class="row m-0 " >
+    <div class="col-2 p-0">
+        <app-sidebar/>
+    </div>
+    <div class="col-10">
+        <h3 class="m-3">Employee List</h3>
+        <div class="d-flex justify-content-between my-4 p-3">
+            <div class="d-flex">
+                <a href="" class="btn btn-success me-3">Add Employee +</a>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Sort
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Sort By Id</a></li>
+                      <li><a class="dropdown-item" href="#">Sort By Name</a></li>
+                    </ul>
+                  </div>
+            </div>
+            <div class="me-3 w-25">
+                <input type="text"class="form-control" placeholder="search" >
+            </div>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Department</th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <td>1</td>
+                <td>Ajay</td>
+                <td>484940949</td>
+                <td>IT</td>
+                <td>
+                    <a href="">
+                        
+                    </a>
+                </td>
+                <td>
+                    <button>
+                        <i class="fa-solid fa-trash-can fa-lg" style="color: #f42a48;"></i>
+                    </button>
+                </td>
+            </tbody>
+        </table>
+    </div>
+</div>

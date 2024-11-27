@@ -1,25 +1,36 @@
-
-
 <div class="d-flex justify-content-center align-items-center" style="height: 85vh;">
-    <div class="w-75 border shadow  p-2 row rounded">
-       <div class="col d-flex justify-content-center align-items-center">
-            <img src="https://img.freepik.com/free-vector/matchmaking-website-idea-social-network-geolocation-search-user-account-personal-profile-internet-surfing-online-dating-service-vector-isolated-concept-metaphor-illustration_335657-2215.jpg?t=st=1731651550~exp=1731655150~hmac=5566e615a38b11d56bd223c7ed45367c2aa66b24b4e3a190b192a7f120d47caa&w=740" class="" width="90%" alt="">
-       </div>
-       <div class="col d-flex justify-content-center px-3   flex-column">
-            <h2 class="text-center mb-3">User SignUp</h2>
-            <form action="">
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                  </div>
-                  <div>
-                    <button class="btn btn-success">Login</button>
-                  </div>
-            </form>
-       </div>
+  <div class="w-75 border shadow  p-2 row rounded">
+    <div class="col d-flex justify-content-center align-items-center">
+      <img
+        src="https://img.freepik.com/free-vector/matchmaking-website-idea-social-network-geolocation-search-user-account-personal-profile-internet-surfing-online-dating-service-vector-isolated-concept-metaphor-illustration_335657-2215.jpg?t=st=1731651550~exp=1731655150~hmac=5566e615a38b11d56bd223c7ed45367c2aa66b24b4e3a190b192a7f120d47caa&w=740"
+        class="" width="90%" alt="">
     </div>
+    <div class="col d-flex justify-content-center px-3   flex-column">
+      <h2 class="text-center mb-3">User SignUp</h2>
+      <form action="" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="formData.email" ngModel
+            required email id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+          <div class="text-danger" *ngIf="email.invalid && email.touched">
+            *invalid Email
+          </div>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" #pass="ngModel" [(ngModel)]="formData.pass" name="pass" ngModel
+            required id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Password</label>
+          <div class="text-danger" *ngIf="pass.invalid && pass.touched">
+            *invalid password
+          </div>
+        </div>
+        
+        <div>
+          <button class="btn btn-success" [disabled]="loginForm.invalid" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

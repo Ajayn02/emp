@@ -6,11 +6,17 @@ import { EditempComponent } from './editemp/editemp.component';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
+import { UpperCasePipe ,LowerCasePipe, DatePipe ,CurrencyPipe,JsonPipe } from '@angular/common';
+import { SearchPipe } from './pipes/search.pipe';
 
 export const routes:Routes=[
   {path:"",component:EmplistComponent},
   {path:"addemp",component:AddempComponent},
-  {path:"editemp",component:EditempComponent}
+  {path:"editemp/:id",component:EditempComponent}
 ]
 
 @NgModule({
@@ -22,7 +28,10 @@ export const routes:Routes=[
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SidebarComponent
+    SidebarComponent,
+    RouterLink,FormsModule,NgIf,NgFor,
+    UpperCasePipe ,LowerCasePipe, DatePipe ,CurrencyPipe,JsonPipe,
+    SearchPipe
   ]
 })
 export class EmpmngModule { }

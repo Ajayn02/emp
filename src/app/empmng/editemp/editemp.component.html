@@ -1,1 +1,36 @@
-<p>editemp works!</p>
+
+
+<div class="d-flex justify-content-center align-items-center" style="height: 85vh;">
+    <div class="w-50 border rounded shadow px-3 py-4" >
+        <h3 class="text-center">Edit Employee</h3>
+        <form action="" #editForm="ngForm" (ngSubmit)="handleEdit()" >
+            <input type="text" pattern="[0-9]+" #eid="ngModel" required readonly [(ngModel)]="employee.id" name="eid" class="form-control mb-3" placeholder="ID" id="">
+            <p *ngIf="eid.invalid && eid.touched" class="text-danger">*Enter Valid Id</p>
+
+            <input type="text" name="ename" required pattern="[a-zA-Z .]+" #ename="ngModel"  [(ngModel)]="employee.name" class="form-control mb-3" placeholder="Name" id="">
+            <p *ngIf="ename.invalid && ename.touched" class="text-danger">*Enter Valid Name</p>
+
+
+            <input type="text" name="ph" required #ephn="ngModel" pattern="^[9876][0-9]{9}"  [(ngModel)]="employee.phone" class="form-control mb-3" placeholder="Phone Number" id="">
+            <p *ngIf="ephn.invalid && ephn.touched" class="text-danger">*Enter Valid Phone</p>
+
+
+            <select name="dept" required #edept="ngModel"  [(ngModel)]="employee.department" class="form-control mb-3" id="">
+                <option value="" selected disabled>Select Department</option>
+                <option value="IT">IT</option>
+                <option value="Account">Account</option>
+                <option value="HR">HR</option>
+                <option value="Sales">Sales</option>
+            </select>
+            <p *ngIf="edept.invalid && edept.touched" class="text-danger">*Enter Valid department</p>
+
+
+            <div class="d-flex justify-content-between">
+                <a routerLink="/empmng" class="btn btn-danger">Cancel</a>
+                <button class="btn btn-success" type="submit" [disabled]="editForm.invalid" >
+                    Update
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

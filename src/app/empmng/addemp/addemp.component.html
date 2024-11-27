@@ -1,1 +1,35 @@
-<p>addemp works!</p>
+
+
+<div class="d-flex justify-content-center align-items-center" style="height: 85vh;">
+    <div class="w-50 border rounded shadow px-3 py-4" >
+        <h3 class="text-center">Add Employee</h3>
+        
+        <form #empForm="ngForm" action="" (ngSubmit)="onSubmit()" >
+            <input type="text"  #empid="ngModel" pattern="[0-9]+" name="eid" [(ngModel)]="formData.id" class="form-control mb-3" placeholder="ID" id="" required>
+            <p *ngIf="empid.invalid && empid.touched" class="text-danger">*invalid Id</p>
+
+            <input type="text" #empname="ngModel" name="ename" [(ngModel)]="formData.name"  class="form-control mb-3" placeholder="Name" id="" required  pattern="[a-zA-Z .]+" >
+            <p *ngIf="empname.invalid && empname.touched" class="text-danger">*invalid Name</p>
+
+            <input type="text" #empphn="ngModel" name="ph" class="form-control mb-3" [(ngModel)]="formData.phone"  placeholder="Phone Number" id="" required pattern="^[9876][0-9]{9}">
+            <p *ngIf="empphn.invalid && empphn.touched" class="text-danger">*invalid phone number</p>
+
+            <select name="dept" #empdep="ngModel" class="form-control mb-3" id="" [(ngModel)]="formData.department" required >
+                <option value="" selected disabled>Select Department</option>
+                <option value="IT">IT</option>
+                <option value="Account">Account</option>
+                <option value="HR">HR</option>
+                <option value="Sales">Sales</option>
+            </select>
+            <p *ngIf="empdep.invalid && empdep.touched" class="text-danger">*invalid department</p>
+
+
+            <div class="d-flex justify-content-between">
+                <a routerLink="/empmng" class="btn btn-danger">Cancel</a>
+                <button class="btn btn-success" [disabled]="empForm.invalid" type="submit">
+                    submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

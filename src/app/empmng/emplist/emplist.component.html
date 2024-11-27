@@ -1,52 +1,75 @@
-<div class="row m-0 " >
+<div class="row m-0 ">
     <div class="col-2 p-0">
-        <app-sidebar/>
+        <app-sidebar />
     </div>
     <div class="col-10">
-        <h3 class="m-3">Employee List</h3>
+        <div class="d-flex justify-content-between my-2">
+            <h3 class="m-3">Employee List</h3>
+           
+
+            <div>
+                <button class="btn btn-danger mt-3">Export As PDF</button>
+
+            </div>
+        </div>
+        <p>{{date | date :"dd-MM-yyyy"}}</p>
+        <!-- <p>{{cur | currency :"INR"}}</p> -->
+
         <div class="d-flex justify-content-between my-4 p-3">
             <div class="d-flex">
-                <a href="" class="btn btn-success me-3">Add Employee +</a>
+                <a routerLink="/empmng/addemp" class="btn btn-success me-3">Add Employee +</a>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Sort
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Sort
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Sort By Id</a></li>
-                      <li><a class="dropdown-item" href="#">Sort By Name</a></li>
+                        <li><a class="dropdown-item" (click)="sortById()">Sort By Id</a></li>
+                        <li><a class="dropdown-item" (click)="sortByName()">Sort By Name</a></li>
                     </ul>
-                  </div>
+                </div>
             </div>
             <div class="me-3 w-25">
-                <input type="text"class="form-control" placeholder="search" >
+                <input type="text" name="key" [(ngModel)]="searchKey"  class="form-control" placeholder="search">
             </div>
         </div>
 
-        <table class="table table-bordered">
+        <table class="table table-bordered text-center" *ngIf="employees.length>0">
             <thead>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Department</th>
-                <th></th>
-                <th></th>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Department</th>
+                    <th></th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
-                <td>1</td>
-                <td>Ajay</td>
-                <td>484940949</td>
-                <td>IT</td>
-                <td>
-                    <a href="">
-                        
-                    </a>
-                </td>
-                <td>
-                    <button>
-                        <i class="fa-solid fa-trash-can fa-lg" style="color: #f42a48;"></i>
-                    </button>
-                </td>
+                <tr *ngFor="let i of employees|search :searchKey ">
+                    <td>{{i.id}}</td>
+                    <td>{{i.name| uppercase}}</td>
+                    <td>{{i.phone }}</td>
+                    <td>{{i.department}}</td>
+                    <td>
+                        <a routerLink="/empmng/editemp/{{i.id}}" class="btn">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <button class="btn" (click)="handleDelete(i.id)">
+                            <i class="fa-solid fa-trash-can fa-lg" style="color: #f42a48;"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr *ngIf="(employees|search:searchKey).length==0">
+                    <p class="fw-bold text-danger text-center">No Employee Found</p>
+                </tr>
             </tbody>
         </table>
+
+        <h2 class="text-center text-danger" *ngIf="employees.length<=0">No Data Added Yet</h2>
+
     </div>
 </div>

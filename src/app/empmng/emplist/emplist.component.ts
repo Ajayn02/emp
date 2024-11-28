@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-emplist',
@@ -15,6 +17,7 @@ export class EmplistComponent implements OnInit {
   date:any=new Date()
   // cur:any =5000
   searchKey:any=""
+  p:number=1
 
   constructor(private api:ApiService , private toaster:ToastrService){}
 
@@ -52,6 +55,38 @@ export class EmplistComponent implements OnInit {
     this.employees.sort((a:any,b:any)=>a.name.localeCompare(b.name))
   }
 
+  genertePdf(){
+    const doc=new jsPDF()
+
+    const head:any=[["ID","Name","Phone","Department"]] 
+    const body:any=[]
+
+    this.employees.forEach((item:any)=>{
+      body.push([item.id,item.name,item.phone,item.department])
+    })
+
+    doc.setFontSize(16)
+    doc.text("All Employees",10,10)
+    autoTable(doc,{
+      head,body
+    })
+    doc.output('dataurlnewwindow')
+    doc.save('employees.pdf')
+
+
+
+
+
+  }
+
+
+
+
+
+
+
 }
+
+
 
 

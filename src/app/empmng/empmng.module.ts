@@ -12,6 +12,7 @@ import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
 import { UpperCasePipe ,LowerCasePipe, DatePipe ,CurrencyPipe,JsonPipe } from '@angular/common';
 import { SearchPipe } from './pipes/search.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export const routes:Routes=[
   {path:"",component:EmplistComponent},
@@ -31,7 +32,7 @@ export const routes:Routes=[
     SidebarComponent,
     RouterLink,FormsModule,NgIf,NgFor,
     UpperCasePipe ,LowerCasePipe, DatePipe ,CurrencyPipe,JsonPipe,
-    SearchPipe
+    SearchPipe,NgxPaginationModule
   ]
 })
 export class EmpmngModule { }

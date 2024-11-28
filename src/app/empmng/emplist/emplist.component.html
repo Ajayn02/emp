@@ -8,7 +8,7 @@
            
 
             <div>
-                <button class="btn btn-danger mt-3">Export As PDF</button>
+                <button class="btn btn-danger mt-3" (click)="genertePdf()">Export As PDF</button>
 
             </div>
         </div>
@@ -46,7 +46,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let i of employees|search :searchKey ">
+                <tr *ngFor="let i of employees|search :searchKey  |paginate:{ itemsPerPage: 3, currentPage: p} ">
                     <td>{{i.id}}</td>
                     <td>{{i.name| uppercase}}</td>
                     <td>{{i.phone }}</td>
@@ -68,6 +68,9 @@
                 </tr>
             </tbody>
         </table>
+        <div class="text-center">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
 
         <h2 class="text-center text-danger" *ngIf="employees.length<=0">No Data Added Yet</h2>
 

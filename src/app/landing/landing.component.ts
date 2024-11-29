@@ -33,6 +33,7 @@ export class LandingComponent {
         if(res.email==this.formData.email && res.password==this.formData.pass){
           // alert("Login Success")
           this.toast.success("Login Success")
+          sessionStorage.setItem('username',res.usename)
           this.router.navigateByUrl('dash')
         }else{
           // alert("Login Failed")

@@ -4,11 +4,12 @@ import { CalenderComponent } from '../calender/calender.component';
 import { ChartComponent } from '../chart/chart.component';
 import { OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { AdminprofileComponent } from '../adminprofile/adminprofile.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [SidebarComponent,CalenderComponent,ChartComponent],
+  imports: [SidebarComponent,CalenderComponent,ChartComponent,AdminprofileComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

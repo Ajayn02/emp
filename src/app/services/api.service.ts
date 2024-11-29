@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  base_url='http://localhost:3000'
+  base_url='https://employeeportal-server-abtw.onrender.com'
 
   constructor(private http:HttpClient) { }
 
@@ -35,5 +35,15 @@ export class ApiService {
   getOneEmployee(id:any){
     return this.http.get(`${this.base_url}/employees/${id}`)
   }
+
+  getAdmin(){
+    return this.http.get(`${this.base_url}/users/1`)
+  }
+
+
+  updateAdminApi(data:any){
+    return this.http.put(`${this.base_url}/users/1`,data)
+  }
+
 
 }

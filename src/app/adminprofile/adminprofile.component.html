@@ -1,0 +1,22 @@
+<div class="">
+    <div class="w-100 d-flex justify-content-center align-items-center" *ngIf="!status" >
+        <button class="btn  btn-link text-center"  (click)="editButton()" >Update Profile</button>
+    </div>
+    
+    <form class="px-2 " *ngIf="status" >
+       <div class="w-100 d-flex  justify-content-center align-items-center">
+            <label for="li">
+                <input type="file" id="li"  style="display: none;" (change)="getFile($event)" >
+                <img [src]="profilePic"  width="170px" height="170px" alt="">
+            </label>
+       </div>
+       <input type="email" class="form-control mb-3 " name="em" [(ngModel)]="adminData.email" placeholder="Enter Email Id" >
+       <input type="text" class="form-control mb-3 " name="ps" [(ngModel)]="adminData.password" placeholder="Enter Passwoed " >
+       <div class="d-flex justify-content-between align-items-center mb-2">
+            <button class="btn btn-warning " (click)="cancelButton()" >Cancel</button>
+            <button class="btn btn-success " (click)="updateAdmin()" >Update</button>
+
+       </div>
+
+    </form>
+</div>
